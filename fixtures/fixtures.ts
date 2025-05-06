@@ -1,13 +1,13 @@
 import { test as base } from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
 
-export type TestOptions = {
+export type Fixtures = {
     loginPage: string
     signupPage: string
     pageManager: PageManager
 }
 
-export const test = base.extend<TestOptions>({
+export const test = base.extend<Fixtures>({
     loginPage: async ({ page }, use) => {
         await page.goto('/login')
         await use('')

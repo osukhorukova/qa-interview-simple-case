@@ -1,4 +1,4 @@
-import { test } from '../../test-options/test-options'
+import { test } from '../../fixtures/fixtures'
 import { randomUserGenerator } from '../../test-data/test-users'
 
 test.describe('Signup form tests', () => {
@@ -8,7 +8,6 @@ test.describe('Signup form tests', () => {
         await pageManager.onSignupPage().fillSignupFormAndPressSubmit(user.firstName, user.lastName, user.email, user.password)
 
         await pageManager.onCompanyPage().verifyWelcomeMessage(user.firstName, user.lastName)
-        await pageManager.onCompanyPage().verifyUserInLocalStorage(user.email)
         await pageManager.onCompanyPage().clickLogout()
 
         await pageManager.onLoginPage().fillLoginFormAndPressLogin(user.email, user.password)

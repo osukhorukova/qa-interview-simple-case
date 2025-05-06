@@ -1,12 +1,11 @@
-import { test } from '../../test-options/test-options'
+import { test } from '../../fixtures/fixtures'
 import { existingUsers } from '../../test-data/test-users'
 
 test.describe('Login form tests', () => {
-  test('Successful login with existing account', async ({ pageManager, loginPage }) => {
-    
-    const existingUser = existingUsers[0]
-
-    await pageManager.onLoginPage().fillLoginFormAndPressLogin(existingUser.email, existingUser.password)
-    await pageManager.onCompanyPage().verifyWelcomeMessage(existingUser.firstName, existingUser.lastName)
+  existingUsers.forEach(user => {
+    test(`Successful login with ${user.firstName} ${user.lastName}`, async ({ pageManager, loginPage }) => {
+      await pageManager.onLoginPage().fillLoginFormAndPressLogin(user.email, user.password)
+      await pageManager.onCompanyPage().verifyWelcomeMessage(user.firstName, user.lastName)
+    })
   })
 })

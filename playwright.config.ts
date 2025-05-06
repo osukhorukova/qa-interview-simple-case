@@ -1,10 +1,9 @@
 import { defineConfig, devices } from '@playwright/test'
-import type { TestOptions } from './test-options/test-options'
 
 export const setupDir = 'playwright/.setup'
 export const setupFile = `${setupDir}/user.json`
 
-export default defineConfig<TestOptions>({
+export default defineConfig({
   reporter: 'html',
   use: {
     baseURL: 'http://localhost:8080/',
