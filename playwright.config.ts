@@ -22,4 +22,10 @@ export default defineConfig({
       dependencies: ['setup'],
     },
   ],
+
+  webServer: {
+    command: 'npm run dev',
+    url: 'http://localhost:8080/',
+    timeout: 120 * 1000,
+  }
 })
