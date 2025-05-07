@@ -4,6 +4,10 @@ export const setupDir = 'playwright/.setup'
 export const setupFile = `${setupDir}/user.json`
 
 export default defineConfig({
+  reporter: 'html',
+  use: {
+    baseURL: 'http://localhost:8080/',
+  },
   projects: [
     // Setup project
     { name: 'setup', testDir: './test-setup/', testMatch: '*' },
@@ -18,4 +22,10 @@ export default defineConfig({
       dependencies: ['setup'],
     },
   ],
+
+  webServer: {
+    command: 'npm run dev',
+    url: 'http://localhost:8080/',
+    timeout: 120 * 1000,
+  }
 })
